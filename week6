@@ -1,1 +1,10 @@
-
+import pandas as pd
+import numpy as np
+from sklearn.mixture import GaussianMixture
+data = pd.read_csv('/content/COVID.csv')
+data = data.select_dtypes(include=[np.number])
+print(data.head())
+em = GaussianMixture(n_components=3)
+em.fit(data)
+labels = em.predict(data)
+print(labels)
